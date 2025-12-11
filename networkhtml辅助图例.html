@@ -1,0 +1,253 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Functions Legend</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .legend-container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            max-width: 900px;
+            width: 100%;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .header {
+            padding: 24px 30px;
+            border-bottom: 1px solid #eee;
+            text-align: center;
+        }
+        
+        .title {
+            font-size: 28px;
+            font-weight: 500;
+            color: #2c3e50;
+            letter-spacing: 0.5px;
+        }
+        
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+        }
+        
+        .legend-item {
+            padding: 35px 25px;
+            text-align: center;
+            border-right: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            transition: all 0.25s ease;
+            min-height: 260px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: white;
+        }
+        
+        .legend-item:nth-child(3n) {
+            border-right: none;
+        }
+        
+        .legend-item:nth-child(4),
+        .legend-item:nth-child(5),
+        .legend-item:nth-child(6) {
+            border-bottom: none;
+        }
+        
+        .legend-item:hover {
+            background: #fafafa;
+        }
+        
+        .color-circle {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        
+        .legend-item:hover .color-circle {
+            transform: scale(1.08);
+        }
+        
+        .function-code {
+            font-size: 22px;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .function-name {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            letter-spacing: 0.3px;
+        }
+        
+        .function-desc {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #666;
+            max-width: 220px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+        
+        /* 颜色特定的阴影 */
+        .hero-circle { box-shadow: 0 6px 20px rgba(46, 204, 113, 0.25); }
+        .villain-circle { box-shadow: 0 6px 20px rgba(231, 76, 60, 0.25); }
+        .donor-circle { box-shadow: 0 6px 20px rgba(230, 126, 34, 0.25); }
+        .helper-circle { box-shadow: 0 6px 20px rgba(39, 174, 96, 0.25); }
+        .prince-circle { box-shadow: 0 6px 20px rgba(232, 67, 147, 0.25); }
+        .falsehero-circle { box-shadow: 0 6px 20px rgba(142, 68, 173, 0.25); }
+        
+        @media (max-width: 768px) {
+            .legend-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .legend-item:nth-child(2n) {
+                border-right: none;
+            }
+            
+            .legend-item:nth-child(5),
+            .legend-item:nth-child(6) {
+                border-bottom: 1px solid #eee;
+            }
+            
+            .legend-item:nth-child(3),
+            .legend-item:nth-child(4) {
+                border-bottom: 1px solid #eee;
+            }
+            
+            .legend-item:nth-child(6) {
+                border-bottom: none;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .legend-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .legend-item {
+                border-right: none;
+                border-bottom: 1px solid #eee;
+                min-height: 220px;
+                padding: 25px 20px;
+            }
+            
+            .legend-item:last-child {
+                border-bottom: none;
+            }
+            
+            .color-circle {
+                width: 55px;
+                height: 55px;
+                margin-bottom: 15px;
+            }
+            
+            .function-code {
+                font-size: 20px;
+            }
+            
+            .function-name {
+                font-size: 18px;
+            }
+            
+            .function-desc {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="legend-container">
+        <div class="header">
+            <h1 class="title">Character Functions</h1>
+        </div>
+        
+        <div class="legend-grid">
+            <!-- Hero -->
+            <div class="legend-item">
+                <div class="color-circle hero-circle" style="background-color: #2ecc71;">
+                    <div class="function-code">H</div>
+                </div>
+                <h3 class="function-name">Hero / Heroine</h3>
+                <p class="function-desc">The protagonist who embarks on a quest and achieves transformation.</p>
+            </div>
+            
+            <!-- Villain -->
+            <div class="legend-item">
+                <div class="color-circle villain-circle" style="background-color: #e74c3c;">
+                    <div class="function-code">V</div>
+                </div>
+                <h3 class="function-name">Villain</h3>
+                <p class="function-desc">Creates harm or opposition to the hero's journey.</p>
+            </div>
+            
+            <!-- Donor -->
+            <div class="legend-item">
+                <div class="color-circle donor-circle" style="background-color: #e67e22;">
+                    <div class="function-code">D</div>
+                </div>
+                <h3 class="function-name">Donor</h3>
+                <p class="function-desc">Provides magical agents or assistance to overcome obstacles.</p>
+            </div>
+            
+            <!-- Helper -->
+            <div class="legend-item">
+                <div class="color-circle helper-circle" style="background-color: #27ae60;">
+                    <div class="function-code">L</div>
+                </div>
+                <h3 class="function-name">Helper</h3>
+                <p class="function-desc">Aids the hero in tasks or supports the quest completion.</p>
+            </div>
+            
+            <!-- Prince/Princess -->
+            <div class="legend-item">
+                <div class="color-circle prince-circle" style="background-color: #e84393;">
+                    <div class="function-code">P</div>
+                </div>
+                <h3 class="function-name">Prince / Princess</h3>
+                <p class="function-desc">Represents the reward, marriage, or restoration of order.</p>
+            </div>
+            
+            <!-- False Hero -->
+            <div class="legend-item">
+                <div class="color-circle falsehero-circle" style="background-color: #8e44ad;">
+                    <div class="function-code">F</div>
+                </div>
+                <h3 class="function-name">False Hero</h3>
+                <p class="function-desc">Claims credit for hero's deeds or attempts to usurp the reward.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
