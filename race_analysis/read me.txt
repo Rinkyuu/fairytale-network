@@ -1,0 +1,2 @@
+这部分的饼图统计了每个故事中的角色中，除性别以外【种族】标签的占比，也就是Hum, Spi, Ani, Mag, Obj。
+并且，在单独的故事以外，再将Cinderella，catskin和Cap o' Rushes这三种类型，每种视为一个整体。例如，为所有cinderella类型的制作一个饼图，另外两种也分别一个饼图。
